@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
+
 const textract = require('textract');
-const colors = require('colors');
+require('colors');
 
 const config = {
   preserveLineBreaks: true
@@ -17,6 +19,7 @@ const keywords = [
   'react',
   'redux',
   'flux',
+  'node',
   'es6',
   'es7',
   'es2015',
@@ -25,26 +28,41 @@ const keywords = [
   'git'
 ];
 
+const filterFormats = path => path.includes('docx') || path.includes('pdf');
+
+const getFileNameFromPath = path => {
+  const pathComponents = path.split('/');
+  return pathComponents[pathComponents.length - 1];
+};
+
+const getNonEmptyLines = text =>
+  text.split('\n').filter(line => line && line !== ' ');
+
+const logMatchedLines = lines => {
+  console.group();
+  lines.forEach(line => console.info('\t', line));
+  console.groupEnd();
+};
+
+const getLinesMatchingKeyword = (keyword, lines) => {
+  const regex = new RegExp(keyword, 'i');
+  return lines
+    .filter(line => line.match(regex))
+    .map(line => line.replace(regex, keyword.bgYellow.black));
+};
+
 (async () => {
   const [_, __, ...filepaths] = process.argv;
-  for (filepath of filepaths.filter(
-    path => path.includes('docx') || path.includes('pdf')
-  )) {
-    const pathComponents = filepath.split('/');
-    const fileName = pathComponents[pathComponents.length - 1];
+  for (const filepath of filepaths.filter(filterFormats)) {
+    const fileName = getFileNameFromPath(filepath);
     console.log(fileName.underline.bold);
     console.group();
     const text = await read(filepath);
-    const lines = text.split('\n').filter(line => line && line !== ' ');
+    const lines = getNonEmptyLines(text);
     keywords.forEach(keyword => {
-      const regex = new RegExp(keyword, 'i');
-      const matchedLines = lines
-        .filter(line => line.match(regex))
-        .map(line => line.replace(regex, keyword.bgYellow.black));
-      console.log(`${matchedLines.length > 0 ? '✅' : '❌'} ${keyword} `);
-      console.group();
-      matchedLines.forEach(line => console.info('\t', line));
-      console.groupEnd();
+      const matchedLines = getLinesMatchingKeyword(keyword, lines);
+      console.log(`${matchedLines.length > 0 ? '✅' : '❌'} ${keyword}`);
+      logMatchedLines(matchedLines);
     });
     console.groupEnd();
     console.log('--------------------\n\n');

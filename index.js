@@ -16,16 +16,52 @@ const read = filePath =>
   });
 
 const keywords = [
-  'react',
-  'redux',
-  'flux',
-  'node',
-  'es6',
-  'es7',
-  'es2015',
-  'functional programming',
-  'fp',
-  'git'
+  {
+    name: 'react',
+    match: ['react', 'reactjs']
+  },
+  {
+    name: 'redux',
+    match: ['redux', 'flux']
+  },
+  {
+    name: 'Modern JS',
+    match: [
+      'modern JS',
+      'es6',
+      'es7',
+      'es2015',
+      'es2016',
+      'es2017',
+      'esnext',
+      'es next',
+      'es6+'
+    ]
+  },
+  {
+    name: 'node',
+    match: ['node', 'nodejs', 'node js']
+  },
+  {
+    name: 'Functional Programming',
+    match: ['fp', 'functional programming']
+  },
+  {
+    name: 'Java',
+    match: ['java']
+  },
+  {
+    name: 'Spring',
+    match: ['spring', 'springmvc', 'spring boot', 'springboot']
+  },
+  {
+    name: 'Android',
+    match: ['Android']
+  },
+  {
+    name: 'iOS',
+    match: ['ios', 'swift', 'objective c', 'objective-c', 'objectivec'],
+  }
 ];
 
 const filterFormats = path => path.includes('docx') || path.includes('pdf');
@@ -45,7 +81,7 @@ const logMatchedLines = lines => {
 };
 
 const getLinesMatchingKeyword = (keyword, lines) => {
-  const regex = new RegExp(keyword, 'i');
+  const regex = new RegExp(`\\b${keyword}\\b`, 'i');
   return lines
     .filter(line => line.match(regex))
     .map(line => line.replace(regex, keyword.bgYellow.black));
@@ -59,9 +95,15 @@ const getLinesMatchingKeyword = (keyword, lines) => {
     console.group();
     const text = await read(filepath);
     const lines = getNonEmptyLines(text);
-    keywords.forEach(keyword => {
-      const matchedLines = getLinesMatchingKeyword(keyword, lines);
-      console.log(`${matchedLines.length > 0 ? '✅' : '❌'} ${keyword}`);
+    keywords.forEach(category => {
+      let matchedLines = [];
+      let score = 0;
+      category.match.forEach(wordToMatch => {
+        matchedLines = matchedLines.concat(
+          getLinesMatchingKeyword(wordToMatch, lines)
+        );
+      });
+      console.log(`${matchedLines.length > 0 ? '✅' : '❌'} ${category.name}`);
       logMatchedLines(matchedLines);
     });
     console.groupEnd();

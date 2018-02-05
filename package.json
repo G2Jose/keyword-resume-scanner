@@ -7,17 +7,23 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "precommit": "lint-staged",
     "prettify":
-      "prettier \"./**/*.{js,json,css}\" --config .prettierrc.json -l --write"
+      "prettier \"./**/*.{js,json,css}\" --config .prettierrc.json -l --write",
+    "start": "bsb -make-world -w",
+    "build:reason": "bsb -make-world"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "babel-preset-env": "^1.6.1",
+    "bs-platform": "^2.1.0",
     "colors": "^1.1.2",
     "command-line-args": "^5.0.1",
     "husky": "^0.14.3",
     "lint-staged": "^6.1.0",
+    "nodemon": "^1.14.12",
     "prettier": "^1.10.2",
+    "reason-cli":
+      "https://github.com/reasonml/reason-cli/archive/3.0.4-bin-darwin.tar.gz",
     "textract": "^2.2.0"
   },
   "bin": {

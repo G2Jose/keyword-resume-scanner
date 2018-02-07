@@ -2,13 +2,27 @@
 'use strict';
 
 var Config = require('./config');
+var Caml_array = require('bs-platform/lib/js/caml_array.js');
+var Js_boolean = require('bs-platform/lib/js/js_boolean.js');
 var CommandLineArgs = require('command-line-args');
 
 function getCommandLineArgs() {
   return CommandLineArgs(Config.cmdLineOptions);
 }
 
-console.log(CommandLineArgs(Config.cmdLineOptions));
+function filterFormats(path) {
+  var str = String(path);
+  return Js_boolean.to_js_boolean(
+    +('docx'.includes(str) || 'pdf'.includes(str))
+  );
+}
+
+function getFileNameFromPath(path) {
+  var components = path.split('/');
+  return Caml_array.caml_array_get(components, components.length);
+}
 
 exports.getCommandLineArgs = getCommandLineArgs;
-/*  Not a pure module */
+exports.filterFormats = filterFormats;
+exports.getFileNameFromPath = getFileNameFromPath;
+/* ./config Not a pure module */

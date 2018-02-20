@@ -1,7 +1,5 @@
 type config;
 
-type config2;
-
 type envVariables;
 
 [@bs.module]

@@ -53,6 +53,9 @@ const skillsToFind = [
       'rxjava',
       'rxcocoa',
       'akka',
+      'rxandroid',
+      'rx android',
+      'rx java',
     ],
   },
   {
@@ -62,6 +65,26 @@ const skillsToFind = [
   {
     name: 'hybris',
     matches: ['hybris'],
+  },
+  {
+    name: 'dagger',
+    matches: ['dagger'],
+  },
+  {
+    name: 'firebase',
+    matches: ['firebase'],
+  },
+  {
+    name: 'realm',
+    matches: ['realm'],
+  },
+  {
+    name: 'mvvm',
+    matches: ['mv-vm', 'mvvm'],
+  },
+  {
+    name: 'retrofit',
+    matches: ['retrofit'],
   },
 ];
 

@@ -10,7 +10,7 @@ const {
   getNonEmptyLines,
   getLinesMatchingKeyword,
   getCommandLineArgs,
-} = require('./utils');
+} = require('./utils.bs');
 
 const config = {
   preserveLineBreaks: true,

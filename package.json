@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "precommit": "lint-staged",
     "prettify":
       "prettier \"./**/*.{js,json,css}\" --config .prettierrc.json -l --write",
@@ -19,6 +19,7 @@
     "colors": "^1.1.2",
     "command-line-args": "^5.0.1",
     "husky": "^0.14.3",
+    "jest": "^22.3.0",
     "lint-staged": "^6.1.0",
     "nodemon": "^1.14.12",
     "prettier": "^1.10.2",

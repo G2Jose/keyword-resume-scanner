@@ -1,7 +1,7 @@
 ####{BSB GENERATED: NO EDIT
 B lib/bs
 FLG -open Reason
-FLG -ppx /usr/local/lib/node_modules/bs-platform/lib/bsppx.exe
+FLG -ppx /Users/georgejose/dev_files/stupid-resume-scanner/node_modules/bs-platform/lib/bsppx.exe
 S /Users/georgejose/dev_files/stupid-resume-scanner/node_modules/bs-platform/lib/ocaml
 B /Users/georgejose/dev_files/stupid-resume-scanner/node_modules/bs-platform/lib/ocaml
 FLG -nostdlib -no-alias-deps -color always

@@ -1,5 +1,5 @@
 require('colors');
-const { regex } = require('./utils');
+const { regex } = require('./utils.bs');
 const { getCommandLineArgs } = require('./utils');
 
 const printResumeResults = data => {

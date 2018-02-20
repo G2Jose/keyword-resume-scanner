@@ -21,3 +21,4 @@ Part of this codebase is written in ReasonML. If you're not familiar with this p
 
 * Dependencies for ReasonML should be automatically installed, but if you run into issues please see https://reasonml.github.io/docs/en/global-installation.html
 * Run `yarn start` to start the bsb which compiles ReasonML to JavaScript
+* Run `yarn test` to run tests

@@ -19,11 +19,13 @@ const skillsToFind = [
       'esnext',
       'es next',
       'es6+',
+      'ecma',
+      'javascript',
     ],
   },
   {
     name: 'node',
-    matches: ['node', 'nodejs', 'node js'],
+    matches: ['node', 'nodejs', 'node js', 'node.js'],
   },
   {
     name: 'Functional Programming',
@@ -31,19 +33,35 @@ const skillsToFind = [
   },
   {
     name: 'Java',
-    matches: ['java'],
+    matches: ['java', 'java 8', 'java 9'],
   },
   {
     name: 'Spring',
-    matches: ['spring', 'springmvc', 'spring boot', 'springboot'],
+    matches: ['spring', 'spring boot', 'springboot', 'java 9'],
   },
   {
     name: 'Android',
-    matches: ['Android'],
+    matches: ['Android', 'kotlin', 'realm', 'dagger2', 'dagger 2'],
+  },
+  {
+    name: 'Rx',
+    matches: [
+      'observables',
+      'rx',
+      'rxjs',
+      'rxswift',
+      'rxjava',
+      'rxcocoa',
+      'akka',
+    ],
   },
   {
     name: 'iOS',
-    matches: ['ios', 'swift', 'objective c', 'objective-c', 'objectivec'],
+    matches: ['ios', 'swift'],
+  },
+  {
+    name: 'hybris',
+    matches: ['hybris'],
   },
 ];
 

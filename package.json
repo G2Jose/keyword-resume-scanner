@@ -28,7 +28,7 @@
     "textract": "^2.2.0"
   },
   "bin": {
-    "resume-screen": "index.js"
+    "resume-screen": "src/index.js"
   },
   "devDependencies": {
     "eslint": "^4.16.0",
